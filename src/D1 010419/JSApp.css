@@ -1,19 +1,19 @@
 .App {
-  text-align: horizontal;
-  margin: 30px;
+  text-align: center;
 }
 
-.container {
-  display: flex;
+
+img {
+  width : 100%;
+}
+
+/*.container {
+  display : flex;
 }
 
 .item {
-    flex: 1;
-  }  
-/*
-img {
-margin: 30px;
-}
+    flex : 100%;
+  } 
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
