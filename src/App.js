@@ -13,7 +13,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className = "App">
         <b /><b /><b />
         <div className="container">
           <Stack name='Mulan' logo={Mulan} />
