@@ -36,7 +36,7 @@ class App extends Component {
                     <div className='item'>
                       <img src={ShawshankRedemption} alt='Shawshank Redemption logo' />
                       <div className='overlay'>
-                  <h1>Shawshank Redemption</h1>
+                  <h2>Shawshank Redemption</h2>
                 </div>
                     </div>
                     <div className='item'>
