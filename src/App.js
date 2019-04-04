@@ -1,17 +1,21 @@
-// #9 Create a Gallery component to show the covers.
+// #8 intro routing/navigation.
 
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import MovieGallery from './MovieGallery';
+import Details from './Details';
 
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className = "App">
-        <b /><b /><b />
-        <MovieGallery />
-      </div >
+      <Router>
+        <div className = "App">
+          <Route exact path='/' component={MovieGallery} />
+          <Route exact path='/details' component={Details} />
+        </div >
+      </Router>
     );
   }
 }
