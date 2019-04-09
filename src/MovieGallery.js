@@ -1,27 +1,30 @@
-// #9 Create a Gallery component to show the covers.
+// 12 Move the covers data model to a proper front-end data
+// To maintain data for UI, using data model using arr of items to layout component. 
+// It will iterate on list of components.
+// Rtn list 
+// In JS easy to work in arr
 
 import React from 'react';
 import Stack from './Stack';
-import Mulan from './Images/Mulan.jpeg';
-import PatchAdams from './Images/PatchAdams.jpeg';
-import Elf from './Images/Elf.jpeg';
-import ShawshankRedemption from './Images/Shawshank.jpeg';
-import StElmos from './Images/StElmos.jpeg';
-import BfastClub from './Images/BfastClub.jpeg';
+import getMovieGallery from './MovGall_get';
 
 export default function MovieGallery() {
   return (
     <div>
       <div className="container">
-        <Stack name='Mulan' logo={Mulan} />
-        <Stack name='Patch Adams' logo={PatchAdams} />
-        <Stack name='Elf' logo={Elf} />
-      </div>
-      <div className="container">
-        <Stack name='Shawshank Redemption' logo={ShawshankRedemption} />
-        <Stack name='St. Elmos Fire' logo={StElmos} />
-        <Stack name='Breakfast Club' logo={BfastClub} />
+        {
+          getMovieGallery().map(stack => (
+            <Stack 
+            key={stack.id}
+            id={stack.id} 
+            name={stack.name} 
+            logo={stack.logo} />
+            //could use <div></div>
+            //render stack component. Ref stack obj, can be replaced with id, name and logo.
+          ))
+        }
       </div>
     </div >
   );
 }
+
