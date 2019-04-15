@@ -1,5 +1,5 @@
 // 13 Introduce component state
-// Stateless Fn to stateful component
+// Stateless Fn to stateful component.
 
 import React, {Component} from 'react';
 
