@@ -1,24 +1,33 @@
-// #8 intro routing/navigation.
+// 13 Introduce component state
+// Stateless Fn to stateful component
 
-import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import MovieGallery from './MovieGallery';
-import Details from './Details';
+import React, {Component} from 'react';
 
-import './App.css';
+import { Link } from 'react-router-dom';
 
-class App extends Component {
-  render() {
+export default class Message extends Component {
+  
+  constructor() {
+      super();
+      this.state = {
+        welcomeMessage: 'Hello, this will be the details page for each Movie & TV show :)'  //display welcome msg
+      };
+  }
+  
+  componentDidMount() {
+      setTimeout(() => {
+        this.setState ({
+          welcomeMessage: 'Coming soon! :)'  //display updated msg
+      });
+  }, 3000);
+}
+  
+render () {
     return (
-      <Router>
-        <div className = "App">
-          <Route exact path='/' component={MovieGallery} />
-          <Route exact path='/details' component={Details} />
-        </div >
-      </Router>
+        <div>
+            <h1>{this.state.welcomeMessage}</h1>
+            <Link to='/'>Back to home page</Link>
+        </div>
     );
   }
 }
-
-
-export default App;

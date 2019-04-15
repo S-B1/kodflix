@@ -1,11 +1,12 @@
-// #8 intro routing/navigation and #9.
+// #11 Improve Gallery Layout for lge screen
+
 
 import React from 'react';
 import {Link} from 'react-router-dom';
 
 export default function Stack(props) {
     return(
-        <Link to='/details' className='item'>
+        <Link to={'/' + props.id} className='item'> 
            <img src={props.logo} alt={props.name + ' logo'} />
            <div className='overlay'>
               <h2>{props.name}</h2>
@@ -13,3 +14,5 @@ export default function Stack(props) {
         </Link>
     );
 }
+//due to the Link, the colours for the names were changed by the browser
+// fixed by changing css file with a tag and 

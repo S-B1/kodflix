@@ -1,5 +1,5 @@
 // 12 Move the covers data model to a proper front-end data
-//UI imporved and can easily be changed in the future
+//UI improved and can easily be changed in the future
 //New arr utility component
 
 //Don't need to import React
