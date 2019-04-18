@@ -1,4 +1,3 @@
-// 14 Show the TV show title on the details page
 
 import React, {Component} from 'react';
 
@@ -14,12 +13,12 @@ export default class Message extends Component {
       };
   }
   
-  componentDidMount() { //renaming Details to Movie Gallery (MovieGallId)
+  componentDidMount() { 
       let MovieGallId = this.props.match.params.MovieGallId;
       let MovGall = MovGall_get()
-        .find((MovGall) => MovGall.id === MovieGallId); //callback Fn invoked until found
+        .find((MovGall) => MovGall.id === MovieGallId); 
       this.setState ({
-          MovGall: MovGall //obj same for k:v (shorthand MovGall)
+          MovGall: MovGall 
       });
   }
   
