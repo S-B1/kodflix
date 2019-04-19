@@ -1,10 +1,8 @@
-// 13 Introduce component state
-//Stateless Fn to stateful component
 
-import React, {component} from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-
-export default class Message extends component() {
+export default class Message extends Component {
+  
   constructor() {
       super();
       this.state = {
@@ -13,19 +11,19 @@ export default class Message extends component() {
   }
   
   componentDidMount() {
-    setTimeout(() => {
-      this.setState ({
-          welcomeMessage: 'Coming soon! :)'  //display updated msg
+      setTimeout(() => {
+        this.setState ({
+          welcomeMessage: 'Coming soon! :)'  
       });
   }, 3000);
 }
   
-  render () {
+render () {
     return (
-      <div>
-          <h1>this.state.welcomeMessage</h1>
-          <Link to='/'>Back to home page</Link>
-      </div>
+        <div>
+            <h1>{this.state.welcomeMessage}</h1>
+            <Link to='/'>Back to home page</Link>
+        </div>
     );
   }
 }
