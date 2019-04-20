@@ -1,25 +1,29 @@
-// 14 Show the TV show title on the details page
-//React component JS Fns-stateless components
 
-import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import MovieGallery from './MovieGallery';
-import Details from './Details';
-
-import './App.css';
-
-class App extends Component {
-  render() {
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+export default class Message extends Component {
+  
+  constructor() {
+      super();
+      this.state = {
+        welcomeMessage: 'Hello, this will be the details page for each Movie & TV show :)'  //display welcome msg
+      };
+  }
+  
+  componentDidMount() {
+      setTimeout(() => {
+        this.setState ({
+          welcomeMessage: 'Coming soon! :)'  
+      });
+  }, 3000);
+}
+  
+render () {
     return (
-      <Router>
-        <div className = "App">
-          <h1>Welcome to my Movie Gallery</h1> 
-          <Route exact path='/' component={MovieGallery} />
-          <Route exact path='/:MovieGallId' component={Details} /> 
-        </div >
-      </Router>
+        <div>
+            <h1>{this.state.welcomeMessage}</h1>
+            <Link to='/'>Back to home page</Link>
+        </div>
     );
   }
 }
-
-export default App;
