@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link , Redirect} from 'react-router-dom';
 import MovGall_get from './MovGall_get';
 
 export default class Message extends Component {
-  
   constructor() {
       super();
       this.state = {
@@ -16,17 +15,19 @@ export default class Message extends Component {
       let MovieGallId = this.props.match.params.MovieGallId;
       let MovGall = MovGall_get()
         .find((MovGall) => MovGall.id === MovieGallId); 
-      this.setState ({
-          MovGall: MovGall 
-      });
+      this.setState ({MovGall: MovGall});
   }
   
   render () {
-      return (
-          <div>
-              <h1>{this.state.MovGall.name}</h1> 
-              <Link to='/'>Back to home page</Link>
-          </div>
-      );
-  }
+      if(this.state.MovGall === undefined) {
+            return <Redirect to='/not-found' />;
+      } else {
+            return (
+                <div>
+                    <h1>{this.state.MovGall.name}</h1> 
+                    <Link to='/'>Back to home page</Link>
+                </div>
+            );
+        }
+    }
 }
