@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 export default function Stack(props) {
     return(
-        <Link to={`/${'/' + props.id}`} className='item'> 
+        <Link to={`/${props.id}`} className='item'> 
            <img src={props.logo} alt={props.name + ' logo'} />
            <div className='overlay'>
               <h2>{props.name}</h2>
