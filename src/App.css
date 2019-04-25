@@ -33,3 +33,16 @@ a {
   opacity: 0.9;
   bottom: 0;
 }
+
+@media only screen and (max-width: 600px) {
+  .container {
+      flex-direction: column;
+      display: block;
+  }
+  body {
+      background-color: burlywood;
+  }
+} 
+/* Added media query */
+
+/* Display the synopsis (left), image (right) on the Details component, following flexbox */
