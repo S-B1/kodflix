@@ -1,0 +1,68 @@
+/* //16 Add synopsis & cover to the details page of each TV show */
+/* //Could prepare a sep Details.css file, but not essential */
+
+.Details .content {
+    display: flex;
+}
+
+.Details .content .text,
+.Details .content .image {
+    padding: 15px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .Details .content {
+        flex-direction: column;
+        /* display: block; */
+    }
+    body {
+        background-color: burlywood;
+    }
+  }
+
+
+  /* The .js file would be:  */
+
+import React, {Component} from 'react';
+import { Link , Redirect} from 'react-router-dom';
+import MovGall_get from '../MovGall_get';
+import '.Details.css';
+
+export default class Message extends Component {
+  constructor() {
+      super();
+      this.state = {
+          MovGall: {}
+      };
+  }
+  
+  componentDidMount() { 
+      let MovieGallId = this.props.match.params.MovieGallId;
+      let MovGall = MovGall_get()
+        .find((MovGall) => MovGall.id === MovieGallId); 
+      this.setState ({MovGall: MovGall}); //why twice
+  }
+  
+  render () {
+      if(this.state.MovGall === undefined) {
+            return <Redirect to='/not-found' />;
+      } else {
+            return (
+                <div className='Details'>
+                    <h1>{this.state.MovGall.name}</h1>
+                    <div className='content'>
+                        <div className='text'>
+                            {this.state.MovGall.synopsis}
+                        </div>
+                        <img
+                            className='image'
+                            src={this.state.MovGall.logo}  //added src
+                            alt={this.state.MovGall.name} />
+                        </div>
+                        <Link to='/'>Back to home page</Link>
+                </div>
+            );
+        }
+    }
+}
