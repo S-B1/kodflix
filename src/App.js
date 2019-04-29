@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MovieGallery from './MovieGallery';
-import Details from './Details/Details';
+import Details from './Details';
 import NotFound from './NotFound'; 
 
 import './App.css';
