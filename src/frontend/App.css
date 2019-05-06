@@ -1,0 +1,48 @@
+
+.App {
+  text-align: center;
+  color: black;
+}
+
+a {
+  color: rgb(177, 109, 6);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.item {
+    padding: 30px;
+    border: 1px solid rgb(24, 23, 23);
+    position: relative;  
+    overflow: hidden;
+}  
+.overlay {
+  transition: bottom ease 1s;
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  width: 100%;
+  background-color: rgb(24, 23, 23);
+  opacity: .9;
+}
+
+.item:hover .overlay {
+  opacity: 0.9;
+  bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+      flex-direction: column;
+      display: block;
+  }
+  body {
+      background-color: burlywood;
+  }
+} 
+/* Added media query */
+
+/* Display the synopsis (left), image (right) on the Details component, following flexbox */
