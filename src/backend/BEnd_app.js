@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const port = 3000;
-const getShows = require('./shows')
+const port = 3001;
+const getShows = require('./MovList')
 
 app.get('/rest/shows', (req, res) => res.send(getShows()));
 
