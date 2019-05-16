@@ -10,7 +10,13 @@ a {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+}
+
+.stack-img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .item {
@@ -19,6 +25,7 @@ a {
     position: relative;  
     overflow: hidden;
 }  
+
 .overlay {
   transition: bottom ease 1s;
   position: absolute;
@@ -43,6 +50,3 @@ a {
       background-color: burlywood;
   }
 } 
-/* Added media query */
-
-/* Display the synopsis (left), image (right) on the Details component, following flexbox */

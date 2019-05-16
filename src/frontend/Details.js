@@ -12,6 +12,14 @@ export default class Message extends Component {
   }
   
   componentDidMount() { 
+      fetch('/rest/shows')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(myJson) {
+            console.log(myJson);
+        });
+
       let MovieGallId = this.props.match.params.MovieGallId;
       let MovGall = MovGall_get()
         .find((MovGall) => MovGall.id === MovieGallId); 
