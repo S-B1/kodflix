@@ -2,7 +2,6 @@
   "name": "kodflix",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "express": "^4.16.4",
     "nodemon": "^1.19.0",
@@ -12,12 +11,13 @@
     "react-scripts": "2.1.8"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "start": "npm-run-all -s build start-backend",
+    "start-frontend": "react-scripts start",
     "start-backend": "nodemon src/backend/BEnd_app.js",
-    "start-all": "npm-run-all -p start start-backend"
+    "start-dev": "npm-run-all -p start-frontend start-backend"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +30,6 @@
   ],
   "devDependencies": {
     "npm-run-all": "^4.1.5"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
