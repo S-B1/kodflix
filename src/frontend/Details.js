@@ -1,9 +1,10 @@
 
 import React, {Component} from 'react';
-import { Link , Redirect} from 'react-router-dom';
-import MovGall_get from './MovGall_get';
+import { Redirect } from 'react-router-dom';
+// import MovGall_get from './MovGall_get';
+import './Details.css';
 
-export default class Message extends Component {
+export default class Details extends Component {
   constructor() {
       super();
       this.state = {
@@ -12,36 +13,41 @@ export default class Message extends Component {
   }
   
   componentDidMount() { 
-      fetch('/rest/shows')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(myJson) {
-            console.log(myJson);
+      fetch('/rest/MovGall')
+        .then(response => response.json())
+        .then(MovGalls => {
+            let MovGallId = this.props.match.params.MovGallId;
+            let MovGall = MovGalls.find(MovGall => MovGallId === MovGall.id); 
+            this.setState ({ MovGall }); 
         });
-
-      let MovieGallId = this.props.match.params.MovieGallId;
-      let MovGall = MovGall_get()
-        .find((MovGall) => MovGall.id === MovieGallId); 
-      this.setState ({MovGall}); 
   }
   
   render () {
-      if(this.state.MovGall === undefined) {
-            return <Redirect to='/not-found' />;
-      } else {
-            return (
-                <div className='Details'>
-                    <h1>{this.state.MovGall.name}</h1>
-                    <div className='container'>
-                        <div>{this.state.MovGall.synopsis}</div>
-                        <img
-                            src={this.state.MovGall.logo}  
-                            alt={this.state.MovGall.name} />
-                    </div>
-                    <Link to='/'>Back to home page</Link>
-                </div>
-            );
-        }
+    let MovGall = this.state.MovGall;  
+    if(MovGall) {
+            return MovGall.id ?
+                <DetailsList MovGall={MovGall} /> :
+                <div />;
+    } else {
+        return <Redirect to='/not-found' />;
     }
+}
+}
+
+function DetailsList({ MovGall }) {
+    return (
+        <div className='details'>
+            <h1>{MovGall.title}</h1>
+            <div className='details_list'>
+                <h3 className='details_list_synopsis'>
+                    { MovGall.synopsis }
+                </h3>
+                <div className='details_list_cover'>
+                <img
+                    src={require(`./Images/${MovGall.id}.svg`)}  
+                    alt={MovGall.title} />
+                </div>
+            </div>
+        </div>
+    );
 }
